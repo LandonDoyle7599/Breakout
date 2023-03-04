@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dystopia Breakout</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="styles/game.css" />
+  </head>
+  <body onload="MyGame.game.initialize();">
+    <div id="game">
+      <div class="window" id="winner-window" style="display: none">
+        <p>Congratulations! Please enter your name</p>
+        <input type="text" id="id-name" />
+        <button id="id-submit">Submit</button>
+      </div>
+      <div class="window" id="escape-window" style="display: none">
+        <p>Are you sure you want to return to the main menu?</p>
+        <button id="id-yes">Yes</button>
+        <button id="id-no">No</button>
+      </div>
+      <div id="main-menu" class="screen">
+        <ul class="menu">
+          <li><button id="id-new-game">New&nbsp;Game</button></li>
+          <li><button id="id-high-scores">High&nbsp;Scores</button></li>
+          <li><button id="id-credits">Credits</button></li>
+        </ul>
+      </div>
+      <div id="game-play" class="screen">
+        <canvas
+          id="id-canvas"
+          width="1000"
+          height="1000"
+          style="
+            width: 90vw;
+            height: 95vh;
+            border-style: solid;
+            border-width: 1px;
+          "
+        >
+        </canvas>
+      </div>
+      <div id="high-scores" class="screen">
+        <h1>High Scores</h1>
+        <ol id="id-high-scores-list"></ol>
+        <ul class="menu">
+          <li><button id="id-reset-high-scores">Reset high scores</button></li>
+          <li><button id="id-high-scores-back">Back</button></li>
+        </ul>
+      </div>
+      <div id="credits" class="screen">
+        <h1>Credits</h1>
+        <p>Developed by</p>
+        <p>Landon Doyle</p>
+        <p>
+          Music by Music by
+          <a
+            href="https://pixabay.com/users/saavane-32312792/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=139641"
+            >saavane</a
+          >
+          from
+          <a
+            href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=139641"
+            >Pixabay</a
+          >
+        </p>
+        <p>
+          Music by
+          <a
+            href="https://pixabay.com/users/evgeny_bardyuzha-25235210/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=123276"
+            >Evgeny_Bardyuzha</a
+          >
+          from
+          <a
+            href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=123276"
+            >Pixabay</a
+          >
+        </p>
+        <ul class="menu">
+          <li><button id="id-credits-back">Back</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      let MyGame = {
+        screens: {},
+        systems: {},
+        input: {},
+        objects: {},
+        render: {},
+      };
+    </script>
+    <script src="scripts/render/particle-system.js"></script>
+    <script src="scripts/systems/particle-system.js"></script>
+    <script src="scripts/input-keyboard.js"></script>
+    <script src="scripts/music.js"></script>
+    <script src="scripts/render/core.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/mainmenu.js"></script>
+    <script src="scripts/gameplay.js"></script>
+    <script src="scripts/highscores.js"></script>
+    <script src="scripts/credits.js"></script>
+    <script src="scripts/random.js"></script>
+  </body>
+</html>
