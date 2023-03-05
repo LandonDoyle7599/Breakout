@@ -9,15 +9,54 @@
   <body onload="MyGame.game.initialize();">
     <div id="game">
       <div class="window" id="winner-window" style="display: none">
-        <p>Congratulations! Please enter your name</p>
-        <input type="text" id="id-name" />
-        <button id="id-submit">Submit</button>
+        <p style="--color:#ffffff">Congratulations! Please enter your name</p>
+        <input placeholder="Enter your name..." style="--color:#ffffff" id="id-name"/>
+        <div class="container" style="min-height:min-content; padding-top: 60px; flex-direction: row;">
+          <a
+          class="button"
+          id="id-submit"
+          href="#"
+          style="--color: #6eff3e"
+          >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          submit
+        </a>
+        </div>
       </div>
-      <div class="window" id="escape-window" style="display: none">
-        <p>Are you sure you want to return to the main menu?</p>
-        <button id="id-yes">Yes</button>
-        <button id="id-no">No</button>
-      </div>
+      <!-- <div style="display:none; background-color: rgba(0,0,0,0); width:100vw; height: 100vh; justify-content: center; align-items: center;"> -->
+        <div class="window" id="escape-window" style="display: none">
+          <p style="--color:#ffffff">Are you sure you want to return to the main menu?</p>
+          <div class="container" style="min-height:min-content; padding-top: 60px; flex-direction: row;">
+            <a
+            class="button"
+            id="id-yes"
+            href="#"
+            style="--color: #ff1867"
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Yes
+          </a>
+          <a
+            class="button"
+            id="id-no"
+            href="#"
+            style="--color: #6eff3e"
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            No
+          </a>
+        </div>
+      <!-- </div> -->
+    </div>
       <div id="main-menu" class="screen">
         <div id="main-menu" class="container">
           <h1 style="--color: #ffffff">Dystopia Breakout</h1>
