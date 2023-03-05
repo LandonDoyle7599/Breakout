@@ -44,7 +44,7 @@ MyGame.screens["game-play"] = (function (game, input) {
   function render() {
     MyGame.graphics.clear();
     MyGame.graphics.drawTexture(background.texture);
-    MyGame.graphics.drawPaddle(game.paddle());
+    MyGame.graphics.drawPaddle(game.paddle(), paddleTexture.texture);
     if(game.gameWon()) {
         MyGame.graphics.drawText(createWonGameTextSpec());
         MyGame.graphics.drawText(createFinalScoreTextSpec(game.getScore()));
@@ -264,6 +264,12 @@ MyGame.screens["game-play"] = (function (game, input) {
     center: { x: 500, y: 500 },
     width: 1000,
     height: 1000,
+  });
+  let paddleTexture = defineTexture({
+    imageSrc: "assets/pixilart-drawing.png",
+    center: { x: 500, y: 950 },
+    width: 200,
+    height: 50,
   });
 
   return {

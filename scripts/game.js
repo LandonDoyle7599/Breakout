@@ -19,6 +19,7 @@ MyGame.game = (function (screens, systems, graphics, render) {
     center: { x: 500, y: 900 },
     width: 300,
     height: 50,
+    imageSrc: "assets/pixilart-drawing.png",
     outlineColor: "rgba(0,0,255,1)",
     fillColor: "rgba(255,255,255,1)",
     moveRate: 1,
@@ -52,7 +53,6 @@ MyGame.game = (function (screens, systems, graphics, render) {
         spec.center.x += spec.moveRate * elapsedTime;
       }
     }
-
     spec.moveLeft = moveLeft;
     spec.moveRight = moveRight;
 
