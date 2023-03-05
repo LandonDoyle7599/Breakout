@@ -19,11 +19,47 @@
         <button id="id-no">No</button>
       </div>
       <div id="main-menu" class="screen">
-        <ul class="menu">
-          <li><button id="id-new-game">New&nbsp;Game</button></li>
-          <li><button id="id-high-scores">High&nbsp;Scores</button></li>
-          <li><button id="id-credits">Credits</button></li>
-        </ul>
+        <div id="main-menu" class="container">
+          <h1 style="--color: #ffffff">Dystopia Breakout</h1>
+          <a class="button" id="id-new-game" href="#" style="--color: #1e9bff">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            New Game
+          </a>
+          <a
+            class="button"
+            id="id-high-scores"
+            href="#"
+            style="--color: #ff1867"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            High Scores
+          </a>
+          <a
+            class="button"
+            id="id-instructions"
+            href="#"
+            style="--color: #6eff3e"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Instructions
+          </a>
+          <a class="button" id="id-credits" href="#" style="--color: #ff3efc">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Credits
+          </a>
+        </div>
       </div>
       <div id="game-play" class="screen">
         <canvas
@@ -40,19 +76,64 @@
         </canvas>
       </div>
       <div id="high-scores" class="screen">
-        <h1>High Scores</h1>
+        <h1 style="--color: #ffffff">High Scores</h1>
         <ol id="id-high-scores-list"></ol>
-        <ul class="menu">
-          <li><button id="id-reset-high-scores">Reset high scores</button></li>
-          <li><button id="id-high-scores-back">Back</button></li>
-        </ul>
+        <div class="container">
+          <a
+            class="button"
+            id="id-reset-high-scores"
+            href="#"
+            style="--color: #ff1867"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Reset High Scores
+          </a>
+          <a
+            class="button"
+            id="id-high-scores-back"
+            href="#"
+            style="--color: #1e9bff"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Main Menu
+          </a>
+        </div>
+      </div>
+      <div id="instructions" class="screen">
+        <h1 style="--color: #ffffff">Instructions</h1>
+        <p style="--color: #ffffff">
+          Use the arrow keys to move the paddle. Break all the bricks to win the
+          game. If the ball hits the bottom of the screen, you lose a life. If
+          you lose all your lives, the game is over. Press ESC at any time to
+          pause the game.
+        </p>
+        <div class="container">
+          <a
+            class="button"
+            id="id-instructions-back"
+            href="#"
+            style="--color: #1e9bff"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Main Menu
+          </a>
+        </div>
       </div>
       <div id="credits" class="screen">
-        <h1>Credits</h1>
-        <p>Developed by</p>
-        <p>Landon Doyle</p>
-        <p>
-          Music by Music by
+        <h1 style="--color: #ffffff">Credits</h1>
+        <p style="--color: #ffffff">Developed by</p>
+        <p style="--color: #ffffff">Landon Doyle</p>
+        <p style="--color: #ffffff">
+          Menu Music by
           <a
             href="https://pixabay.com/users/saavane-32312792/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=139641"
             >saavane</a
@@ -63,8 +144,8 @@
             >Pixabay</a
           >
         </p>
-        <p>
-          Music by
+        <p style="--color: #ffffff">
+          Game Music by
           <a
             href="https://pixabay.com/users/evgeny_bardyuzha-25235210/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=123276"
             >Evgeny_Bardyuzha</a
@@ -75,9 +156,43 @@
             >Pixabay</a
           >
         </p>
-        <ul class="menu">
-          <li><button id="id-credits-back">Back</button></li>
-        </ul>
+        <p style="--color: #ffffff">
+          Game background from
+          <a href="https://www.peakpx.com/en/hd-wallpaper-desktop-akdky/"
+            >PeakPx</a
+          >
+        </p>
+        <p style="--color: #ffffff">
+          Heart Sprites from
+          <a href="https://opengameart.org/content/heart-pixel-art"
+            >Open Game Art</a
+          >
+        </p>
+        <p style="--color: #ffffff">
+          Favicon from
+          <a href="https://icons8.com/icon/set/city/nolan">Icons8</a>
+        </p>
+        <p style="--color: #ffffff">
+          Button CSS from
+          <a href="https://codepen.io/mortezasharifinia/pen/QWxmEWW"
+            >mortezasharifinia</a
+          >
+          at CodePen
+        </p>
+        <div class="container">
+          <a
+            class="button"
+            id="id-credits-back"
+            href="#"
+            style="--color: #1e9bff"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Main Menu
+          </a>
+        </div>
       </div>
     </div>
 
@@ -97,6 +212,7 @@
     <script src="scripts/render/core.js"></script>
     <script src="scripts/game.js"></script>
     <script src="scripts/mainmenu.js"></script>
+    <script src="scripts/instructions.js"></script>
     <script src="scripts/gameplay.js"></script>
     <script src="scripts/highscores.js"></script>
     <script src="scripts/credits.js"></script>

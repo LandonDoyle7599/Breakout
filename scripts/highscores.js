@@ -36,6 +36,7 @@ MyGame.screens["high-scores"] = (function (game) {
             highScores[i].lives
         )
       );
+      li.style = "--color:#64befa"
       list.appendChild(li);
     }
   }
