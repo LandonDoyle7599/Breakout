@@ -21,9 +21,10 @@
       <div id="main-menu" class="screen">
         <div id="main-menu" class="container">
           <h1 style="--color: #ffffff">Dystopia Breakout</h1>
-          <a class="button" id="id-new-game" href="#" style="--color: #1e9bff">
-            <span></span>
-            <span></span>
+          <div style="display: flex; flex-direction: row; gap: 120px; justify-content: center; align-items: center;">
+            <a class="button" id="id-new-game" href="#" style="--color: #1e9bff">
+              <span></span>
+              <span></span>
             <span></span>
             <span></span>
             New Game
@@ -40,6 +41,8 @@
             <span></span>
             High Scores
           </a>
+        </div>
+        <div style="display: flex; flex-direction: row; gap:130px; padding-right: 63px;">
           <a
             class="button"
             id="id-instructions"
@@ -60,6 +63,7 @@
             Credits
           </a>
         </div>
+        </div>
       </div>
       <div id="game-play" class="screen">
         <canvas
@@ -78,7 +82,7 @@
       <div id="high-scores" class="screen">
         <h1 style="--color: #ffffff">High Scores</h1>
         <ol id="id-high-scores-list"></ol>
-        <div class="container">
+        <div class="container" style="min-height: fit-content; padding-top: 60px;">
           <a
             class="button"
             id="id-reset-high-scores"
@@ -113,7 +117,7 @@
           you lose all your lives, the game is over. Press ESC at any time to
           pause the game.
         </p>
-        <div class="container">
+        <div class="container" style="min-height: fit-content; padding-top: 60px;">
           <a
             class="button"
             id="id-instructions-back"
@@ -179,7 +183,7 @@
           >
           at CodePen
         </p>
-        <div class="container">
+        <div class="container" style="min-height: fit-content; padding-top: 60px;">
           <a
             class="button"
             id="id-credits-back"

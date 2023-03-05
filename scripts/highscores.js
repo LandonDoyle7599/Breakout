@@ -27,16 +27,15 @@ MyGame.screens["high-scores"] = (function (game) {
     let iterationCount = highScores.length > 5 ? 5 : highScores.length;
     for (let i = 0; i < iterationCount; i++) {
       let li = document.createElement("li");
-      li.appendChild(
-        document.createTextNode(
-          highScores[i].name +
-            " - score: " +
-            highScores[i].score +
-            " - lives: " +
-            highScores[i].lives
-        )
-      );
-      li.style = "--color:#64befa"
+      let p = document.createElement("p");
+      p.style="--color:#ffffff"
+      p.innerText =
+        highScores[i].name +
+        " - score: " +
+        highScores[i].score +
+        " - lives: " +
+        highScores[i].lives;
+      li.appendChild(p);
       list.appendChild(li);
     }
   }
