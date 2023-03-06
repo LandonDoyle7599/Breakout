@@ -148,7 +148,6 @@ MyGame.game = (function (screens, systems, graphics, render) {
     let highScores = JSON.parse(localStorage.highScores);
     highScores.push({ score: score, name: name, lives: lives });
     highScores.sort((a, b) => b.score - a.score || b.lives - a.lives);
-
     localStorage.highScores = JSON.stringify(highScores);
   }
 
