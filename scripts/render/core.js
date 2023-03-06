@@ -8,14 +8,6 @@ MyGame.graphics = (function () {
     context.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  // --------------------------------------------------------------
-  //
-  // Draws a texture to the canvas with the following specification:
-  //    image: Image
-  //    center: {x: , y: }
-  //    size: { width: , height: }
-  //
-  // --------------------------------------------------------------
   function drawTexture(texture) {
     if (texture.image.ready) {
       context.save();
@@ -51,17 +43,6 @@ MyGame.graphics = (function () {
     texture.center.y = spec.center.y + 30;
     texture.rotation = spec.rotation;
     drawTexture(texture);
-  }
-  function drawCircle(spec) {
-    context.beginPath();
-    context.arc(spec.center.x, spec.center.y, spec.radius, 0, 2 * Math.PI);
-    context.closePath();
-
-    context.strokeStyle = spec.outlineColor;
-    context.fillStyle = spec.fillColor;
-
-    context.fill();
-    context.stroke();
   }
 
   function drawRectangle(spec) {
@@ -163,7 +144,6 @@ MyGame.graphics = (function () {
     drawTexture: drawTexture,
     drawText: drawText,
     drawRectangle: drawRectangle,
-    drawCircle: drawCircle,
     drawBlockGrid: drawBlockGrid,
     getTextWidth: getTextWidth,
     textWidth: textWidth,

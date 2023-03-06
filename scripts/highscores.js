@@ -1,10 +1,16 @@
 MyGame.screens["high-scores"] = (function (game) {
   "use strict";
+  let exitFn = (event) => {
+    if (event.key === "Escape") {
+      game.showScreen("main-menu");
+    }
+  };
 
   function initialize() {
     document
       .getElementById("id-high-scores-back")
       .addEventListener("click", function () {
+        document.removeEventListener("keydown", exitFn);
         game.showScreen("main-menu");
       });
     document
@@ -15,10 +21,10 @@ MyGame.screens["high-scores"] = (function (game) {
         }
         document.getElementById("id-high-scores-list").innerHTML = "";
       });
-    //Todo: add reset button
   }
 
   function run() {
+    document.addEventListener("keydown", exitFn, { once: true });
     let list = document.getElementById("id-high-scores-list");
     list.innerHTML = "";
     if (!localStorage.highScores) return;
@@ -28,7 +34,7 @@ MyGame.screens["high-scores"] = (function (game) {
     for (let i = 0; i < iterationCount; i++) {
       let li = document.createElement("li");
       let p = document.createElement("p");
-      p.style="--color:#ffffff"
+      p.style = "--color:#ffffff";
       p.innerText =
         highScores[i].name +
         " - score: " +
