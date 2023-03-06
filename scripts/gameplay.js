@@ -18,8 +18,8 @@ MyGame.screens["game-play"] = (function (game, input) {
         return;
       }
     }
-    if(game.gameWon()) {
-        return
+    if (game.gameWon()) {
+      return;
     }
     if (!initializedBall && checkCountdown(elapsedTime)) {
       game.lockBall();
@@ -45,14 +45,14 @@ MyGame.screens["game-play"] = (function (game, input) {
     MyGame.graphics.clear();
     MyGame.graphics.drawTexture(background.texture);
     MyGame.graphics.drawPaddle(game.paddle(), paddleTexture.texture);
-    if(game.gameWon()) {
-        MyGame.graphics.drawText(createWonGameTextSpec());
-        MyGame.graphics.drawText(createFinalScoreTextSpec(game.getScore()));
-        MyGame.graphics.drawText(createInstructionsSpec());
-        return;
+    if (game.gameWon()) {
+      MyGame.graphics.drawText(createWonGameTextSpec());
+      MyGame.graphics.drawText(createFinalScoreTextSpec(game.getScore()));
+      MyGame.graphics.drawText(createInstructionsSpec());
+      return;
     }
     MyGame.graphics.drawBlockGrid(game.getBlockGrid());
-    MyGame.game.renderParticles()
+    MyGame.game.renderParticles();
     if (game.gameOver()) {
       MyGame.graphics.drawText(createLostGameTextSpec());
       MyGame.graphics.drawText(createFinalScoreTextSpec(game.getScore()));
@@ -96,8 +96,7 @@ MyGame.screens["game-play"] = (function (game, input) {
   function initialize() {
     myKeyboard.register("Escape", function () {
       cancelNextRequest = true;
-      //
-      // Stop the game loop by canceling the request for the next animation frame
+
       if (game.gameWon() || game.gameOver()) {
         let nameInput = document.getElementById("id-name");
         nameInput.focus();
@@ -105,7 +104,6 @@ MyGame.screens["game-play"] = (function (game, input) {
         document
           .getElementById("id-submit")
           .addEventListener("click", function () {
-    
             document.getElementById("id-name").value = "";
             game.logScore(game.getScore(), nameInput.value, game.getLives());
             document.getElementById("winner-window").style.display = "none";
@@ -169,7 +167,7 @@ MyGame.screens["game-play"] = (function (game, input) {
         y: 350,
       },
       rotation: 0,
-      text: countdown > 0 ? "   " + Math.ceil(countdown): "GO!",
+      text: countdown > 0 ? "   " + Math.ceil(countdown) : "GO!",
     };
   }
 

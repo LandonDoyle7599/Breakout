@@ -1,10 +1,3 @@
-// ------------------------------------------------------------------
-//
-// This is the game object.  Everything about the game is located in
-// this object.
-//
-// ------------------------------------------------------------------
-
 MyGame.game = (function (screens, systems, graphics, render) {
   "use strict";
   let score = 0;
@@ -159,23 +152,14 @@ MyGame.game = (function (screens, systems, graphics, render) {
     localStorage.highScores = JSON.stringify(highScores);
   }
 
-  //------------------------------------------------------------------
-  //
-  // This function is used to change to a new active screen.
-  //
-  //------------------------------------------------------------------
   function showScreen(id) {
-    //
-    // Remove the active state from all screens.  There should only be one...
     let active = document.getElementsByClassName("active");
     for (let screen = 0; screen < active.length; screen++) {
       active[screen].classList.remove("active");
     }
-    //
-    // Tell the screen to start actively running
+
     screens[id].run();
-    //
-    // Then, set the new screen to be active
+
     document.getElementById(id).classList.add("active");
   }
 
@@ -248,9 +232,9 @@ MyGame.game = (function (screens, systems, graphics, render) {
       center: { x: block.center.x, y: block.center.y },
       width: block.width,
       height: block.height,
-      size: 6,
-      outlineColor: 'rgba(255,255,255,.9)',
-      fillColor: 'rgba(255,255,255,.9)',
+      size: 4,
+      outlineColor: "rgba(255,255,255,.9)",
+      fillColor: "rgba(255,255,255,.9)",
     });
     system.create();
     particleSystems.push(system);
@@ -302,22 +286,16 @@ MyGame.game = (function (screens, systems, graphics, render) {
       particleRenderers[i].render();
     }
   }
-  //------------------------------------------------------------------
-  //
-  // This function performs the one-time game initialization.
-  //
-  //------------------------------------------------------------------
+
   function initialize() {
     let screen = null;
-    //
-    // Go through each of the screens and tell them to initialize
+
     for (screen in screens) {
       if (screens.hasOwnProperty(screen)) {
         screens[screen].initialize();
       }
     }
-    //
-    // Make the main-menu screen the active one
+
     showScreen("main-menu");
   }
 
@@ -354,7 +332,6 @@ MyGame.game = (function (screens, systems, graphics, render) {
     paddle.width = 300;
     balls = [];
     balls.push(b1);
-    // initializeBall();
     initializePaddle();
     createBlockGrid();
     lineStats = {

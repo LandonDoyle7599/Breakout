@@ -2,8 +2,6 @@ MyGame.screens["main-menu"] = (function (game) {
   "use strict";
 
   function initialize() {
-    //
-    // Setup each of menu events for the screens
     document
       .getElementById("id-new-game")
       .addEventListener("click", function () {
