@@ -105,7 +105,7 @@ MyGame.screens["game-play"] = (function (game, input) {
           .getElementById("id-submit")
           .addEventListener("click", function () {
             game.logScore(game.getScore(), nameInput.value, game.getLives());
-            document.getElementById("id-name").value = "";
+            nameInput.value = "";
             document.getElementById("winner-window").style.display = "none";
             cancelNextRequest = true;
             MyGame.music.pauseSound("game");

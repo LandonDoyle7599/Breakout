@@ -2,7 +2,6 @@ MyGame.game = (function (screens, systems, graphics, render) {
   "use strict";
   let score = 0;
   let hitTop = false;
-  let hitBlocks = 0;
   let totalHits = 0;
   let ballCount = 100;
   let lives = 3;
@@ -32,6 +31,7 @@ MyGame.game = (function (screens, systems, graphics, render) {
     center: { x: 500, y: 925 },
     radius: 25,
     speed: 0,
+    hitBlocks: 0,
     direction: { x: 0, y: 0 },
   };
 
@@ -99,6 +99,7 @@ MyGame.game = (function (screens, systems, graphics, render) {
 
   function initializeBall() {
     balls[0].speed = 0.5;
+    balls[0].hitBlocks = 0;
     balls[0].direction = Random.nextBallVector();
   }
 
@@ -189,19 +190,19 @@ MyGame.game = (function (screens, systems, graphics, render) {
             ) {
               block.broken = true;
               addParticles(block);
-              hitBlocks += 1;
+              ball.hitBlocks += 1;
               totalHits += 1;
-              if (hitBlocks === 4) {
-                ball.speed += 0.05;
-              }
-              if (hitBlocks === 12) {
-                ball.speed += 0.075;
-              }
-              if (hitBlocks === 36) {
+              if (ball.hitBlocks === 4) {
                 ball.speed += 0.1;
               }
-              if (hitBlocks === 62) {
-                ball.speed += 0.125;
+              if (ball.hitBlocks === 12) {
+                ball.speed += 0.1;
+              }
+              if (ball.hitBlocks === 36) {
+                ball.speed += 0.1;
+              }
+              if (ball.hitBlocks === 62) {
+                ball.speed += 0.1;
               }
 
               score += block.score;
@@ -231,7 +232,7 @@ MyGame.game = (function (screens, systems, graphics, render) {
       center: { x: block.center.x, y: block.center.y },
       width: block.width,
       height: block.height,
-      size: 4,
+      size: 3,
       outlineColor: "rgba(255,255,255,.9)",
       fillColor: "rgba(255,255,255,.9)",
     });
@@ -251,6 +252,7 @@ MyGame.game = (function (screens, systems, graphics, render) {
       },
       direction: Random.nextBallVector(),
       speed: 0.5,
+      hitBlocks: 0,
       radius: 20,
     });
   }
@@ -312,7 +314,6 @@ MyGame.game = (function (screens, systems, graphics, render) {
     hitTop = false;
     particleRenderers = [];
     particleSystems = [];
-    hitBlocks = 0;
     if (lives <= 0) {
       return;
     }
@@ -326,7 +327,6 @@ MyGame.game = (function (screens, systems, graphics, render) {
     ballCount = 100;
     lives = 3;
     totalHits = 0;
-    hitBlocks = 0;
     hitTop = false;
     paddle.width = 300;
     balls = [];

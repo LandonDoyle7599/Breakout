@@ -29,20 +29,32 @@ MyGame.graphics = (function () {
   }
 
   function drawBalls(balls, texture) {
+    context.shadowBlur = 2;
+    context.shadowColor = "white";
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = -10;
     for (let i = 0; i < balls.length; i++) {
       texture.center.x = balls[i].center.x;
       texture.center.y = balls[i].center.y;
       drawTexture(texture);
     }
+    context.shadowBlur = 0;
+    context.shadowColor = "transparent";
   }
 
   function drawPaddle(spec, texture) {
+    context.shadowBlur = 10;
+    context.shadowColor = "rgba(94, 204, 255, 1)";
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
     texture.width = spec.width;
     texture.height = 300;
     texture.center.x = spec.center.x;
     texture.center.y = spec.center.y + 30;
     texture.rotation = spec.rotation;
     drawTexture(texture);
+    context.shadowBlur = 0;
+    context.shadowColor = "transparent";
   }
 
   function drawRectangle(spec) {
