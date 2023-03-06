@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
 
 body {
@@ -41,6 +42,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
   background-color: #27282c;
   position: absolute;
   border-radius: 25px;
@@ -109,7 +111,6 @@ a{
   text-align: center;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
 * {
   font-family: 'Poppins', sans-serif;

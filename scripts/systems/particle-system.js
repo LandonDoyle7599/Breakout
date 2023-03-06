@@ -86,7 +86,8 @@ MyGame.systems.ParticleSystem = function (spec) {
 
       //
       // Rotate proportional to its speed
-      particle.rotation += particle.speed / 500;
+      particle.rotation += particle.speed;
+      particle.rotation = particle.rotation % (Math.PI * 2);
 
       //
       // If the lifetime has expired, identify it for removal

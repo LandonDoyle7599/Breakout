@@ -36,11 +36,19 @@ MyGame.graphics = (function () {
     }
   }
 
+  function drawBalls(balls, texture) {
+    for (let i = 0; i < balls.length; i++) {
+      texture.center.x = balls[i].center.x;
+      texture.center.y = balls[i].center.y;
+      drawTexture(texture);
+    }
+  }
+
   function drawPaddle(spec, texture) {
     texture.width = spec.width;
     texture.height = 300;
     texture.center.x = spec.center.x;
-    texture.center.y = spec.center.y +30;
+    texture.center.y = spec.center.y + 30;
     texture.rotation = spec.rotation;
     drawTexture(texture);
   }
@@ -85,9 +93,17 @@ MyGame.graphics = (function () {
   function drawBlockGrid(blockGrid) {
     for (let i = 0; i < blockGrid.length; i++) {
       for (let j = 0; j < blockGrid[i].length; j++) {
-        if (!blockGrid[i][j].broken) drawRectangle(blockGrid[i][j]);
+        if (!blockGrid[i][j].broken) {
+          context.shadowBlur = 10;
+          context.shadowColor = "white";
+          context.shadowOffsetX = 0;
+          context.shadowOffsetY = 0;
+          drawRectangle(blockGrid[i][j]);
+        }
       }
     }
+    context.shadowBlur = 0;
+    context.shadowColor = "transparent";
   }
 
   function drawLives(lives, spec1, spec2, spec3) {
@@ -105,6 +121,10 @@ MyGame.graphics = (function () {
 
   function drawText(spec) {
     context.save();
+    context.shadowBlur = 10;
+    context.shadowColor = "white";
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
 
     context.font = spec.font;
     context.fillStyle = spec.fillStyle;
@@ -119,12 +139,6 @@ MyGame.graphics = (function () {
     context.strokeText(spec.text, spec.position.x, spec.position.y);
 
     context.restore();
-  }
-
-  function drawBalls(balls) {
-    for (let i = 0; i < balls.length; i++) {
-      drawCircle(balls[i]);
-    }
   }
 
   function getTextWidth(text, font) {
