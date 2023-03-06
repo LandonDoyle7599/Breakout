@@ -16,9 +16,10 @@ MyGame.game = (function (screens, systems, graphics, render) {
   let paddleShrinking = false;
 
   let paddle = definePaddle({
-    center: { x: 500, y: 900 },
+    center: { x: 500, y: 890 },
     width: 300,
     height: 50,
+    imageSrc: "assets/pixilart-drawing.png",
     outlineColor: "rgba(0,0,255,1)",
     fillColor: "rgba(255,255,255,1)",
     moveRate: 1,
@@ -36,7 +37,7 @@ MyGame.game = (function (screens, systems, graphics, render) {
     outlineColor: "rgba(255,255,255,1)",
     fillColor: "rgba(200,200,200,1)",
     center: { x: 500, y: 925 },
-    radius: 20,
+    radius: 25,
     speed: 0,
     direction: { x: 0, y: 0 },
   };
@@ -52,7 +53,6 @@ MyGame.game = (function (screens, systems, graphics, render) {
         spec.center.x += spec.moveRate * elapsedTime;
       }
     }
-
     spec.moveLeft = moveLeft;
     spec.moveRight = moveRight;
 
@@ -69,8 +69,8 @@ MyGame.game = (function (screens, systems, graphics, render) {
       3: "rgba(0,0,255,1)",
       4: "rgba(255,165,0,1)",
       5: "rgba(255,165,0,1)",
-      6: "rgba(255,255,0,1)",
-      7: "rgba(255,255,0,1)",
+      6: "rgba(231, 218, 14,1)",
+      7: "rgba(231, 218, 14,1)",
     };
     let scores = {
       0: 5,
@@ -87,8 +87,8 @@ MyGame.game = (function (screens, systems, graphics, render) {
       for (let j = 0; j < 14; j++) {
         blockGrid[i].push({
           center: { x: 40 + j * 70.7, y: 100 + i * 45 },
-          width: 68,
-          height: 40,
+          width: 65,
+          height: 37,
           outlineColor: colors[i],
           fillColor: colors[i],
           rotation: 0,
@@ -248,9 +248,9 @@ MyGame.game = (function (screens, systems, graphics, render) {
       center: { x: block.center.x, y: block.center.y },
       width: block.width,
       height: block.height,
-      size: 4,
-      outlineColor: block.outlineColor,
-      fillColor: block.fillColor,
+      size: 6,
+      outlineColor: 'rgba(255,255,255,.9)',
+      fillColor: 'rgba(255,255,255,.9)',
     });
     system.create();
     particleSystems.push(system);

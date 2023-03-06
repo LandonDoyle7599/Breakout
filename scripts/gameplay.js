@@ -44,7 +44,7 @@ MyGame.screens["game-play"] = (function (game, input) {
   function render() {
     MyGame.graphics.clear();
     MyGame.graphics.drawTexture(background.texture);
-    MyGame.graphics.drawPaddle(game.paddle());
+    MyGame.graphics.drawPaddle(game.paddle(), paddleTexture.texture);
     if(game.gameWon()) {
         MyGame.graphics.drawText(createWonGameTextSpec());
         MyGame.graphics.drawText(createFinalScoreTextSpec(game.getScore()));
@@ -67,7 +67,7 @@ MyGame.screens["game-play"] = (function (game, input) {
     );
     MyGame.graphics.drawText(createScoreTextSpec(game.getScore()));
     if (!game.paddleShrinking()) {
-      MyGame.graphics.drawBalls(game.balls());
+      MyGame.graphics.drawBalls(game.balls(), ballTexture.texture);
     }
     if (countdown > -1) {
       MyGame.graphics.drawText(createCountdownSpec());
@@ -99,12 +99,15 @@ MyGame.screens["game-play"] = (function (game, input) {
       //
       // Stop the game loop by canceling the request for the next animation frame
       if (game.gameWon() || game.gameOver()) {
+        let nameInput = document.getElementById("id-name");
+        nameInput.focus();
+        nameInput.select();
         document
           .getElementById("id-submit")
           .addEventListener("click", function () {
-            let name = document.getElementById("id-name").value;
+    
             document.getElementById("id-name").value = "";
-            game.logScore(game.getScore(), name, game.getLives());
+            game.logScore(game.getScore(), nameInput.value, game.getLives());
             document.getElementById("winner-window").style.display = "none";
             cancelNextRequest = true;
             MyGame.music.pauseSound("game");
@@ -158,41 +161,41 @@ MyGame.screens["game-play"] = (function (game, input) {
 
   function createCountdownSpec() {
     return {
-      font: "200px Arial",
+      font: "bold 200px Poppins",
       fillStyle: "white",
-      strokeStyle: "white",
+      strokeStyle: "black",
       position: {
-        x: MyGame.graphics.getTextWidth("333", "200px Arial"),
+        x: MyGame.graphics.getTextWidth("333", "bold 200px Poppins"),
         y: 350,
       },
       rotation: 0,
-      text: countdown > 0 ? "  " + Math.ceil(countdown) : "GO!",
+      text: countdown > 0 ? "   " + Math.ceil(countdown): "GO!",
     };
   }
 
   function createInstructionsSpec() {
     return {
-      font: "35px Arial",
+      font: "bold 45px Poppins",
       fillStyle: "white",
       strokeStyle: "black",
       position: {
         x: MyGame.graphics.getTextWidth(
-          "Press ESC to enter your name and return to the main menu",
-          "35px Arial"
+          "Press ESC to return to the main menu",
+          "bold 45px Poppins"
         ),
-        y: 550,
+        y: 525,
       },
       rotation: 0,
-      text: "Press ESC to enter your name and return to the main menu",
+      text: "Press ESC to return to the main menu",
     };
   }
   function createFinalScoreTextSpec(score) {
     return {
-      font: "50px Arial",
+      font: "bold 50px Poppins",
       fillStyle: "white",
       strokeStyle: "black",
       position: {
-        x: MyGame.graphics.getTextWidth("Score: " + score, "50px Arial"),
+        x: MyGame.graphics.getTextWidth("Score: " + score, "bold 50px Poppins"),
         y: 450,
       },
       rotation: 0,
@@ -201,24 +204,24 @@ MyGame.screens["game-play"] = (function (game, input) {
   }
   function createLostGameTextSpec() {
     return {
-      font: "80px Arial",
+      font: "bold 80px Poppins",
       fillStyle: "white",
       strokeStyle: "black",
       position: {
-        x: MyGame.graphics.getTextWidth("Game Over, Try Again", "80px Arial"),
+        x: MyGame.graphics.getTextWidth("Game Over", "bold 80px Poppins"),
         y: 350,
       },
       rotation: 0,
-      text: "Game Over, Try Again",
+      text: "Game Over",
     };
   }
   function createWonGameTextSpec() {
     return {
-      font: "80px Arial",
+      font: "bold 80px Poppins",
       fillStyle: "white",
       strokeStyle: "black",
       position: {
-        x: MyGame.graphics.getTextWidth("You Win!", "80px Arial"),
+        x: MyGame.graphics.getTextWidth("You Win!", "bold 80px Poppins"),
         y: 350,
       },
       rotation: 0,
@@ -227,43 +230,55 @@ MyGame.screens["game-play"] = (function (game, input) {
   }
   function createScoreTextSpec(score) {
     return {
-      font: "35px Arial",
+      font: "bold 50px Poppins",
       fillStyle: "white",
       strokeStyle: "black",
       position: {
-        x: MyGame.graphics.textWidth("Score: " + score, "30px Arial"),
+        x: MyGame.graphics.textWidth("SCORE: " + score, "bold 50px Poppins"),
         y: 950,
       },
       rotation: 0,
-      text: "Score: " + score,
+      text: "SCORE: " + score,
     };
   }
   myKeyboard.register("ArrowLeft", game.paddle().moveLeft);
   myKeyboard.register("ArrowRight", game.paddle().moveRight);
 
   let lifeOne = defineTexture({
-    imageSrc: "assets/lives.png",
-    center: { x: 40, y: 970 },
-    width: 50,
-    height: 50,
+    imageSrc: "assets/anatomicalHeart.png",
+    center: { x: 40, y: 960 },
+    width: 250,
+    height: 250,
   });
   let lifeTwo = defineTexture({
-    imageSrc: "assets/lives.png",
-    center: { x: 115, y: 970 },
-    width: 50,
-    height: 50,
+    imageSrc: "assets/anatomicalHeart.png",
+    center: { x: 115, y: 960 },
+    width: 250,
+    height: 250,
   });
   let lifeThree = defineTexture({
-    imageSrc: "assets/lives.png",
-    center: { x: 190, y: 970 },
-    width: 50,
-    height: 50,
+    imageSrc: "assets/anatomicalHeart.png",
+    center: { x: 190, y: 960 },
+    width: 250,
+    height: 250,
   });
   let background = defineTexture({
     imageSrc: "assets/background.jpg",
     center: { x: 500, y: 500 },
     width: 1000,
     height: 1000,
+  });
+  let paddleTexture = defineTexture({
+    imageSrc: "assets/pixilart-drawing.png",
+    center: { x: 500, y: 950 },
+    width: 200,
+    height: 50,
+  });
+  let ballTexture = defineTexture({
+    imageSrc: "assets/ballicon.png",
+    center: { x: 500, y: 500 },
+    width: 50,
+    height: 50,
   });
 
   return {

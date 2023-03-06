@@ -9,45 +9,50 @@
   <body onload="MyGame.game.initialize();">
     <div id="game">
       <div class="window" id="winner-window" style="display: none">
-        <p style="--color:#ffffff">Congratulations! Please enter your name</p>
-        <input placeholder="Enter your name..." style="--color:#ffffff" id="id-name"/>
-        <div class="container" style="min-height:min-content; padding-top: 60px; flex-direction: row;">
-          <a
-          class="button"
-          id="id-submit"
-          href="#"
-          style="--color: #6eff3e"
-          >
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          submit
-        </a>
+        <p style="--color: #ffffff">Congratulations! Please enter your name</p>
+        <input
+          placeholder="Enter your name..."
+          style="--color: #ffffff"
+          id="id-name"
+        />
+        <div
+          class="container"
+          style="
+            min-height: min-content;
+            padding-top: 60px;
+            flex-direction: row;
+          "
+        >
+          <a class="button" id="id-submit" href="#" style="--color: #6eff3e">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            submit
+          </a>
         </div>
       </div>
       <!-- <div style="display:none; background-color: rgba(0,0,0,0); width:100vw; height: 100vh; justify-content: center; align-items: center;"> -->
-        <div class="window" id="escape-window" style="display: none">
-          <p style="--color:#ffffff">Are you sure you want to return to the main menu?</p>
-          <div class="container" style="min-height:min-content; padding-top: 60px; flex-direction: row;">
-            <a
-            class="button"
-            id="id-yes"
-            href="#"
-            style="--color: #ff1867"
-            >
+      <div class="window" id="escape-window" style="display: none">
+        <p style="--color: #ffffff">
+          Are you sure you want to return to the main menu?
+        </p>
+        <div
+          class="container"
+          style="
+            min-height: min-content;
+            padding-top: 60px;
+            flex-direction: row;
+          "
+        >
+          <a class="button" id="id-yes" href="#" style="--color: #ff1867">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Yes
           </a>
-          <a
-            class="button"
-            id="id-no"
-            href="#"
-            style="--color: #6eff3e"
-            >
+          <a class="button" id="id-no" href="#" style="--color: #6eff3e">
             <span></span>
             <span></span>
             <span></span>
@@ -55,53 +60,73 @@
             No
           </a>
         </div>
-      <!-- </div> -->
-    </div>
+        <!-- </div> -->
+      </div>
       <div id="main-menu" class="screen">
         <div id="main-menu" class="container">
           <h1 style="--color: #ffffff">Dystopia Breakout</h1>
-          <div style="display: flex; flex-direction: row; gap: 120px; justify-content: center; align-items: center;">
-            <a class="button" id="id-new-game" href="#" style="--color: #1e9bff">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              gap: 120px;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <a
+              class="button"
+              id="id-new-game"
+              href="#"
+              style="--color: #1e9bff"
+            >
               <span></span>
               <span></span>
-            <span></span>
-            <span></span>
-            New Game
-          </a>
-          <a
-            class="button"
-            id="id-high-scores"
-            href="#"
-            style="--color: #ff1867"
+              <span></span>
+              <span></span>
+              New Game
+            </a>
+            <a
+              class="button"
+              id="id-high-scores"
+              href="#"
+              style="--color: #ff1867"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              High Scores
+            </a>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              gap: 130px;
+              padding-right: 63px;
+            "
           >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            High Scores
-          </a>
-        </div>
-        <div style="display: flex; flex-direction: row; gap:130px; padding-right: 63px;">
-          <a
-            class="button"
-            id="id-instructions"
-            href="#"
-            style="--color: #6eff3e"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Instructions
-          </a>
-          <a class="button" id="id-credits" href="#" style="--color: #ff3efc">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Credits
-          </a>
-        </div>
+            <a
+              class="button"
+              id="id-instructions"
+              href="#"
+              style="--color: #6eff3e"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Instructions
+            </a>
+            <a class="button" id="id-credits" href="#" style="--color: #ff3efc">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Credits
+            </a>
+          </div>
         </div>
       </div>
       <div id="game-play" class="screen">
@@ -121,7 +146,10 @@
       <div id="high-scores" class="screen">
         <h1 style="--color: #ffffff">High Scores</h1>
         <ol id="id-high-scores-list"></ol>
-        <div class="container" style="min-height: fit-content; padding-top: 60px;">
+        <div
+          class="container"
+          style="min-height: fit-content; padding-top: 60px"
+        >
           <a
             class="button"
             id="id-reset-high-scores"
@@ -156,7 +184,10 @@
           you lose all your lives, the game is over. Press ESC at any time to
           pause the game.
         </p>
-        <div class="container" style="min-height: fit-content; padding-top: 60px;">
+        <div
+          class="container"
+          style="min-height: fit-content; padding-top: 60px"
+        >
           <a
             class="button"
             id="id-instructions-back"
@@ -173,8 +204,10 @@
       </div>
       <div id="credits" class="screen">
         <h1 style="--color: #ffffff">Credits</h1>
-        <p style="--color: #ffffff">Developed by</p>
-        <p style="--color: #ffffff">Landon Doyle</p>
+        <p style="--color: #ffffff">Developed by Landon Doyle</p>
+        <p style="--color: #ffffff">
+          Paddle pixel art made by Me! With <a href="pixilart.com">PixilArt</a>
+        </p>
         <p style="--color: #ffffff">
           Menu Music by
           <a
@@ -207,8 +240,9 @@
         </p>
         <p style="--color: #ffffff">
           Heart Sprites from
-          <a href="https://opengameart.org/content/heart-pixel-art"
-            >Open Game Art</a
+          <a
+            href="https://www.freepik.com/premium-vector/pixel-art-heart-icon_17858104.htm#query=anatomical%20pixel%20heart&position=18&from_view=search&track=ais"
+            >freepik</a
           >
         </p>
         <p style="--color: #ffffff">
@@ -222,7 +256,17 @@
           >
           at CodePen
         </p>
-        <div class="container" style="min-height: fit-content; padding-top: 60px;">
+        <p style="--color: #ffffff">
+          Ball texture from
+          <a
+            href="https://imgbin.com/png/m5n0G6tF/pixel-art-planet-pixelation-png"
+            >imgbin</a
+          >
+        </p>
+        <div
+          class="container"
+          style="min-height: fit-content; padding-top: 60px"
+        >
           <a
             class="button"
             id="id-credits-back"
