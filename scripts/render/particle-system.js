@@ -2,10 +2,12 @@ MyGame.render.ParticleSystem = function (system, graphics) {
   "use strict";
 
   function render() {
-    Object.getOwnPropertyNames(system.particles()).forEach(function (value) {
-      let particle = system.particles()[value];
-      graphics.drawRectangle(particle);
-    });
+    let particles = system.particles();
+    for (let i = 0; i < particles.length; i++) {
+      if (particles[i].alive < particles[i].lifetime) {
+        graphics.drawRectangle(particles[i]);
+      }
+    }
   }
 
   let api = {

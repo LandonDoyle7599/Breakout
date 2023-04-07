@@ -1,50 +1,49 @@
 MyGame.systems.ParticleSystem = function (spec) {
   "use strict";
-  let nextName = 1;
-  let particles = {};
+  let particles = [];
 
   function create() {
     let particleX = 0;
     let particleY = 0;
-    for (let i = 0; i < spec.height / spec.size; i++) {
-      for (let j = 0; j < spec.width / spec.size; j++) {
-        particleX = spec.center.x - spec.width / 2 + j * spec.size;
-        particleY = spec.center.y - spec.height / 2 + i * spec.size;
-        particles[nextName++] = {
-          center: {
-            x: particleX,
-            y: particleY,
-          },
-          outlineColor: spec.outlineColor,
-          fillColor: spec.fillColor,
-          width: spec.size,
-          height: spec.size,
-          speed: 0.075,
-          lifetime: Random.nextGaussian(500, 250),
-          direction: Random.nextDirectionRelativeToCenter(
-            particleX,
-            particleY,
-            spec.center.x,
-            spec.center.y
-          ),
-          alive: 0,
-          rotation: 0,
-        };
+    let iterationCount = ((spec.width / spec.size) * spec.height) / spec.size;
+    let height = 0;
+    let width = 0;
+    let widthSpec = spec.width / spec.size;
+    for (let j = 0; j < iterationCount; j++) {
+      particleX = spec.center.x - spec.width / 2 + width * spec.size;
+      particleY = spec.center.y - spec.height / 2 + height * spec.size;
+      particles.push({
+        center: {
+          x: particleX,
+          y: particleY,
+        },
+        outlineColor: spec.outlineColor,
+        fillColor: spec.fillColor,
+        width: spec.size,
+        height: spec.size,
+        speed: 0.075,
+        lifetime: Random.nextGaussian(500, 250),
+        direction: Random.nextDirectionRelativeToCenter(
+          particleX,
+          particleY,
+          spec.center.x,
+          spec.center.y
+        ),
+        alive: 0,
+        rotation: 0,
+      });
+
+      width++
+      if (width > widthSpec) {
+        width = 0;
+        height++;
       }
     }
   }
 
   function update(elapsedTime) {
-    let done = false;
-    let removeMe = [];
-
-    Object.getOwnPropertyNames(particles).forEach(function (
-      value,
-      index,
-      array
-    ) {
-      let particle = particles[value];
-
+    for (let i = particles.length-1; i >= 0; i--) {
+      let particle = particles[i];
       particle.alive += elapsedTime;
 
       particle.center.x += elapsedTime * particle.speed * particle.direction.x;
@@ -54,19 +53,14 @@ MyGame.systems.ParticleSystem = function (spec) {
       particle.rotation = particle.rotation % (Math.PI * 2);
 
       if (particle.alive > particle.lifetime) {
-        removeMe.push(value);
+        particles.splice(i, 1);
       }
-    });
-
-    for (let particle = 0; particle < removeMe.length; particle++) {
-      delete particles[removeMe[particle]];
     }
-    removeMe.length = 0;
 
-    if (Object.getOwnPropertyNames(particles).length == 0) {
-      done = true;
+    if (particles.length===0) {
+      return true;
     }
-    return done;
+    return false;
   }
 
   let api = {
