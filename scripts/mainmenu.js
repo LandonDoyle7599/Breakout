@@ -31,7 +31,6 @@ MyGame.screens["main-menu"] = (function (game) {
       document
       .getElementById("id-midterm")
       .addEventListener("click", function () {
-        console.log("here")
         window.location.replace("https://LandonDoyle7599.github.io/Midterm");
       });
   }
