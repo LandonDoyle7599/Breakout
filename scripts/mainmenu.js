@@ -28,6 +28,11 @@ MyGame.screens["main-menu"] = (function (game) {
       .addEventListener("click", function () {
         game.showScreen("instructions");
       });
+      document
+      .getElementById("id-midterm")
+      .addEventListener("click", function () {
+        window.location.replace("https://LandonDoyle7599.github.io/Midterm");
+      });
   }
 
   function run() {
